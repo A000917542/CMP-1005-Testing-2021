@@ -1,0 +1,22 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form asp-action="/index" method="post">
+    <input type="number" name="leftNumber" id="leftNumber" />
+    <input type="number" name="rightNumber" id="rightNumber" />
+    <fieldset>
+        <label><input type="checkbox" name="operation" value="add" id="operation_add" /> Add</label>
+        <label><input type="checkbox" name="operation" value="sub" id="operation_sub" /> Subtract</label>
+        <label><input type="checkbox" name="operation" value="mul" id="operation_mul" /> Multiply</label>
+        <label><input type="checkbox" name="operation" value="div" id="operation_div" /> Divide</label>
+    </fieldset>
+    <input type="submit" value="Calculate" id="calculate" />
+</form>
+
+@if (@Model.ResultSet)
+            {
+<p>Answer is <output id="calculation_answer">@Model.Result</output>.</p>
+            }
