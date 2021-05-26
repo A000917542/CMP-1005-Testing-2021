@@ -20,33 +20,40 @@ namespace CMP_1005_Integration_Tests
         public void EdgeDriverInitialize()
         {
             new DriverManager().SetUpDriver(new ChromeConfig());
+            
             // Initialize edge driver 
             var options = new ChromeOptions
             {
-                PageLoadStrategy = PageLoadStrategy.Normal
+                PageLoadStrategy = PageLoadStrategy.Normal,
+                AcceptInsecureCertificates = true
             };
 
             _driver = new ChromeDriver(options);
         }
 
         [TestMethod]
-        public void EnsureApplicaitonCanAddTwoNumbers()
+        [DataTestMethod]
+        [DataRow("1", "1", "operation_add", "2")]
+        [DataRow("5", "1", "operation_sub", "4")]
+        [DataRow("5", "2", "operation_mul", "10")]
+        [DataRow("6", "3", "operation_div", "2")]
+        public void EnsureApplicaitonCanDoBasicMath(string leftNumber, string rightNumber, string operation, string expectedResult)
         {
             // Replace with your own test logic
             _driver.Url = testUrl;
             var leftNum = _driver.FindElementById("leftNumber");
             var rightNum = _driver.FindElementById("rightNumber");
-            var addBox = _driver.FindElementById("operation_add");
+            var operationBox = _driver.FindElementById(operation);
             var calcBtn = _driver.FindElementById("calculate");
 
-            leftNum.SendKeys("1");
-            rightNum.SendKeys("1");
-            addBox.Click();
+            leftNum.SendKeys(leftNumber);
+            rightNum.SendKeys(rightNumber);
+            operationBox.Click();
             calcBtn.Click();
 
             var output = _driver.FindElementById("calculation_answer");
             var answer = output.Text;
-            Assert.AreEqual("2", answer);
+            Assert.AreEqual(expectedResult, answer);
         }
 
         [TestCleanup]
