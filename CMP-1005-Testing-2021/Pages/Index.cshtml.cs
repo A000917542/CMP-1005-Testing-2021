@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CMP_1005_Calculator;
 
 namespace CMP_1005_Testing_2021.Pages
 {
@@ -37,19 +38,19 @@ namespace CMP_1005_Testing_2021.Pages
             switch (operation)
             {
                 case "add":
-                    Result = leftNumber + rightNumber;
+                    Result = Calculator.add(leftNumber, rightNumber);
                     ResultSet = true;
                     break;
                 case "sub":
-                    Result = leftNumber - rightNumber;
+                    Result = Calculator.subtract(leftNumber, rightNumber);
                     ResultSet = true;
                     break;
                 case "mul":
-                    Result = leftNumber * rightNumber;
+                    Result = Calculator.multiply(leftNumber, rightNumber); ;
                     ResultSet = true;
                     break;
                 case "div":
-                    Result = leftNumber / rightNumber;
+                    Result = Calculator.divide(leftNumber, rightNumber); ;
                     ResultSet = true;
                     break;
                 default:

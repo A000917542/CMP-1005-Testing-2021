@@ -88,5 +88,65 @@ namespace CMP_1005_Calculator_Tests
             double result2 = CMP_1005_Calculator.Calculator.divide(right, left);
             Assert.IsTrue(result != result2);
         }
+
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(1, 2)]
+        [DataRow(4, 7)]
+        [DataRow(9, 5)]
+        [DataRow(2, 17)]
+        [TestCategory("Multiplication")]
+        public void MultiplyingTwoPositiveNumbersShouldResultInAPositiveNumber(double left, double right)
+        {
+            double result = CMP_1005_Calculator.Calculator.multiply(left, right);
+            Assert.IsTrue(result > 0);
+        }
+
+        [TestMethod]
+        [DataTestMethod]
+        [DataRow(-1, -2)]
+        [DataRow(-4, -7)]
+        [DataRow(-9, -5)]
+        [DataRow(-2, -17)]
+        [TestCategory("Multiplication")]
+        public void MultiplyingTwoNegativeNumbersShouldResultInAPositiveNumber(double left, double right)
+        {
+            //double left = -1;
+            //double right = -2;
+            double result = CMP_1005_Calculator.Calculator.multiply(left, right);
+            Assert.IsTrue(result > 0);
+        }
+
+        [TestMethod]
+        [TestCategory("Multiplication")]
+        public void MultiplyingTwoNumbersShouldNotDependOnOrder()
+        {
+            double left = 1;
+            double right = 2;
+            double result = CMP_1005_Calculator.Calculator.multiply(left, right);
+            double result2 = CMP_1005_Calculator.Calculator.multiply(right, left);
+            Assert.IsTrue(result == result2);
+        }
+
+        [TestMethod]
+        [TestCategory("Subtracation")]
+        public void SubtractingTwoNumbersShouldDependOnOrder()
+        {
+            double left = 1;
+            double right = 2;
+            double result = CMP_1005_Calculator.Calculator.subtract(left, right);
+            double result2 = CMP_1005_Calculator.Calculator.subtract(right, left);
+            Assert.IsTrue(result != result2);
+        }
+
+        [TestMethod]
+        [TestCategory("Subtracation")]
+        public void SubtractingAnegativeShouldResultInAPositive()
+        {
+            double left = 1;
+            double right = -2;
+            double result = CMP_1005_Calculator.Calculator.subtract(left, right);
+            Assert.IsTrue(result > 0);
+        }
     }
 }

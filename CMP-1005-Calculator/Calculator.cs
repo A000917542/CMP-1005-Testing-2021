@@ -2,7 +2,7 @@
 
 namespace CMP_1005_Calculator
 {
-    public class Calculator
+    public static class Calculator
     {
         static public double add(double leftNumber, double rightNumber)
         {
@@ -17,9 +17,14 @@ namespace CMP_1005_Calculator
             throw new DivideByZeroException("Cannot divide by zero");
         }
 
-        static public double subtract(double left, double right)
+        static public double subtract(double leftNumber, double rightNumber)
         {
-            return 0.0;
+            return leftNumber - rightNumber;
+        }
+
+        static public double multiply(double leftNumber, double rightNumber)
+        {
+            return leftNumber * rightNumber;
         }
     }
 }

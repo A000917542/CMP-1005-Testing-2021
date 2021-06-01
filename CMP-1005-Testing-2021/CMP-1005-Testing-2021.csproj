@@ -5,4 +5,8 @@
     <RootNamespace>CMP_1005_Testing_2021</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CMP-1005-Calculator\CMP-1005-Calculator.csproj" />
+  </ItemGroup>
+
 </Project>

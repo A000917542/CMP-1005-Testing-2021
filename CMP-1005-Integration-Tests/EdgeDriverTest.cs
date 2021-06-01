@@ -31,7 +31,6 @@ namespace CMP_1005_Integration_Tests
             _driver = new ChromeDriver(options);
         }
 
-        [TestMethod]
         [DataTestMethod]
         [DataRow("1", "1", "operation_add", "2")]
         [DataRow("5", "1", "operation_sub", "4")]
