@@ -14,7 +14,7 @@ namespace CMP_1005_Calculator
             if (rightNumber != 0)
                 return leftNumber / rightNumber;
 
-            throw new DivideByZeroException("Cannot divide by zero");
+            throw new DivideByZeroException(String.Format("Cannot divide {0} by zero", leftNumber));
         }
 
         static public double subtract(double leftNumber, double rightNumber)
