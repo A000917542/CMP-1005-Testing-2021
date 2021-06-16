@@ -1,4 +1,20 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿window.addEventListener('DOMContentLoaded', () => {
 
-// Write your JavaScript code.
+    let form = $('#calculateForm');
+    form.on('submit', (evt) => {
+        evt.preventDefault();
+
+        let leftNumber = $('#leftNumber').val();
+        let rightNumber = $('#rightNumber').val();
+
+        if (leftNumber > 0 && rightNumber > 0) {
+            fetch(`https://localhost:44388/Calculate/add?leftNumber=${leftNumber}&rightNumber=${rightNumber}`)
+                .then((response) => response.text())
+                .then((body) => {
+                    let answer = `<p>Answer is <output id="calculation_answer">${body}</output>.</p>`;
+                    form.append(answer);
+                });
+        }
+    });
+
+});

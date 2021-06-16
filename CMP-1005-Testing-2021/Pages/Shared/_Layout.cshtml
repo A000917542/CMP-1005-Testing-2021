@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
+    <script src="~/js/loader.js" async asp-append-version="true"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CMP_1005_Testing_2021</title>
@@ -30,6 +31,9 @@
         </nav>
     </header>
     <div class="container">
+        <div class="js-warning bg-warning">
+            <span>JavaScript is disabled, we will perform full page refreshes</span>
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
