@@ -18,6 +18,16 @@ namespace CMP_1005_Testing_2021
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(logging => {
+                    logging.ClearProviders();
+#if DEBUG == true
+                    logging.AddDebug();
+#endif
+#if DEBUG == false
+                    // logging.AddApplicationInsights();
+                    logging.AddEventLog();
+#endif
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

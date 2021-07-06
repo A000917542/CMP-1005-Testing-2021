@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using CMP_1005_Calculator;
+using Microsoft.Extensions.Logging;
 
 namespace CMP_1005_API.Controllers
 {
@@ -12,17 +13,44 @@ namespace CMP_1005_API.Controllers
     [Route("[controller]/[action]")]
     public class CalculateController : ControllerBase
     {
-        [HttpGet]
-        public double add(double leftNumber, double rightNumber)
+        private readonly ILogger<CalculateController> _logger;
+
+        public CalculateController(ILogger<CalculateController> logger)
         {
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            return Calculator.add(leftNumber, rightNumber);
+            _logger = logger;
         }
 
         [HttpGet]
-        public double divide(double leftNumber, double rightNumber)
+        public double add(double leftNumber, double rightNumber)
         {
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            _logger.LogTrace("Made it into the add method");
+            Response.Headers.Add("Access-Control-Allow-Origin", "https://localhost:44377");
+            _logger.LogTrace("Set Cors");
+            var ret = Calculator.add(leftNumber, rightNumber);
+            _logger.LogInformation($"Calculation result was {ret}");
+            return ret;
+        }
+
+        [HttpGet]
+        public double mul(double leftNumber, double rightNumber)
+        {
+            Response.Headers.Add("Access-Control-Allow-Origin", "https://localhost:44377");
+            var ret = Calculator.multiply(leftNumber, rightNumber);
+            return ret;
+        }
+
+        [HttpGet]
+        public double sub(double leftNumber, double rightNumber)
+        {
+            Response.Headers.Add("Access-Control-Allow-Origin", "https://localhost:44377");
+            var ret = Calculator.subtract(leftNumber, rightNumber);
+            return ret;
+        }
+
+        [HttpGet]
+        public double div(double leftNumber, double rightNumber)
+        {
+            Response.Headers.Add("Access-Control-Allow-Origin", "https://localhost:44377");
             //Response.Headers.Add("Location", "https://www.yahoo.com");
             double result = 0;
 

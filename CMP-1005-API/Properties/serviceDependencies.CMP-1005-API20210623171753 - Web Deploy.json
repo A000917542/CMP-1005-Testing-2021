@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/CMP-1005-APIapi/apis/CMP-1005-API",
+      "type": "apis.azure"
+    }
+  }
+}

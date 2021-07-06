@@ -7,11 +7,11 @@
 <form id="calculateForm" method="post">
     <input type="number" name="leftNumber" id="leftNumber" />
     <input type="number" name="rightNumber" id="rightNumber" />
-    <fieldset>
-        <label><input type="checkbox" name="operation" value="add" id="operation_add" /> Add</label>
-        <label><input type="checkbox" name="operation" value="sub" id="operation_sub" /> Subtract</label>
-        <label><input type="checkbox" name="operation" value="mul" id="operation_mul" /> Multiply</label>
-        <label><input type="checkbox" name="operation" value="div" id="operation_div" /> Divide</label>
+    <fieldset id="operation-group">
+        <label><input type="radio" name="operation" value="add" id="operation_add" /> Add</label>
+        <label><input type="radio" name="operation" value="sub" id="operation_sub" /> Subtract</label>
+        <label><input type="radio" name="operation" value="mul" id="operation_mul" /> Multiply</label>
+        <label><input type="radio" name="operation" value="div" id="operation_div" /> Divide</label>
     </fieldset>
     <input type="submit" value="Calculate" id="calculate" />
 </form>

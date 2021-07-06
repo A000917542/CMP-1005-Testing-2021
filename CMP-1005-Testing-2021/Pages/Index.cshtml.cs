@@ -30,27 +30,35 @@ namespace CMP_1005_Testing_2021.Pages
 
         public void OnGet()
         {
-
+            _logger.LogInformation($"{User?.Identity?.Name} has made a Get Request.");
         }
 
         public void OnPost(double leftNumber, double rightNumber, string operation)
         {
+            _logger.LogDebug($"Left number is {leftNumber}");
+            _logger.LogDebug($"Right number is {rightNumber}");
+            _logger.LogDebug($"Operation is {operation}");
+
             switch (operation)
             {
                 case "add":
+                    _logger.LogDebug("Operation selected was 'add'");
                     Result = Calculator.add(leftNumber, rightNumber);
                     ResultSet = true;
                     break;
                 case "sub":
+                    _logger.LogDebug("Operation selected was 'sub'");
                     Result = Calculator.subtract(leftNumber, rightNumber);
                     ResultSet = true;
                     break;
                 case "mul":
+                    _logger.LogDebug("Operation selected was 'mul'");
                     Result = Calculator.multiply(leftNumber, rightNumber); ;
                     ResultSet = true;
                     break;
                 case "div":
-                    Result = Calculator.divide(leftNumber, rightNumber); ;
+                    _logger.LogDebug("Operation selected was 'div'");
+                    Result = Calculator.divide(leftNumber, rightNumber);
                     ResultSet = true;
                     break;
                 default:

@@ -3,9 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>CMP_1005_API</RootNamespace>
+    <UserSecretsId>1710026d-bd1c-4444-a076-8573a4e0b298</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/d795050a-9b35-4cab-b2f2-329df406600b/resourceGroups/CMP-1005-APIResourceGroup/providers/microsoft.insights/components/CMP-1005-API</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
