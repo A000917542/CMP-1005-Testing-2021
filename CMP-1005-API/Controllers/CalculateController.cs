@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using CMP_1005_Calculator;
 using Microsoft.Extensions.Logging;
 

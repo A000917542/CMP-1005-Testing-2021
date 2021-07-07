@@ -1,3 +1,4 @@
+using CMP_1005_Testing_2021.Utility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,8 +24,12 @@ namespace CMP_1005_Testing_2021
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-#if DEBUG == true
+#if DEBUG == false
             services.AddApplicationInsightsTelemetry();
+            services.AddSingleton<IInsightsJavaScriptSnippet, ApplicationInsightsJavaScriptSnippet>();
+#endif
+#if DEBUG == true
+            services.AddSingleton<IInsightsJavaScriptSnippet, BlankInsightsJavaScriptSnippet>();
 #endif
             services.AddLogging();
 
