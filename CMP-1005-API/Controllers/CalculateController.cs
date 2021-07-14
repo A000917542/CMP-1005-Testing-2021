@@ -33,8 +33,11 @@ namespace CMP_1005_API.Controllers
         [HttpGet]
         public double mul(double leftNumber, double rightNumber)
         {
+            _logger.LogTrace("Made it into the add method");
             Response.Headers.Add("Access-Control-Allow-Origin", "https://localhost:44377");
+            _logger.LogTrace("Set Cors");
             var ret = Calculator.multiply(leftNumber, rightNumber);
+            _logger.LogInformation($"Calculation result was {ret}");
             return ret;
         }
 

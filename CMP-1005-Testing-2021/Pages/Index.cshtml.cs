@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CMP_1005_Calculator;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace CMP_1005_Testing_2021.Pages
 {
@@ -30,21 +32,25 @@ namespace CMP_1005_Testing_2021.Pages
 
         public void OnGet()
         {
-            _logger.LogInformation($"{User?.Identity?.Name} has made a Get Request.");
+            _logger.LogInformation($"{Request.Path}:{Request.Method}:{User?.Identity?.Name : \"Anonymous\"}");
         }
 
         public void OnPost(double leftNumber, double rightNumber, string operation)
         {
+            _logger.LogTrace("Just entereed the OnPost Method");
+            _logger.LogInformation($"{Request.Path}:{Request.Method}:{User?.Identity?.Name: \"Anonymous\"}");
             _logger.LogDebug($"Left number is {leftNumber}");
             _logger.LogDebug($"Right number is {rightNumber}");
             _logger.LogDebug($"Operation is {operation}");
-
+            _logger.LogTrace("About to enter switch statement");
             switch (operation)
             {
                 case "add":
-                    _logger.LogDebug("Operation selected was 'add'");
+                    _logger.LogTrace("Operation selected was 'add'");
                     Result = Calculator.add(leftNumber, rightNumber);
+                    _logger.LogTrace($"Result Calculated was {Result}");
                     ResultSet = true;
+                    _logger.LogTrace($"Set ResultSet to {ResultSet}");
                     break;
                 case "sub":
                     _logger.LogDebug("Operation selected was 'sub'");

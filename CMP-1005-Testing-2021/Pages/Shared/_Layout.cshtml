@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-    @{ #if DEBUG == false}
+    @{ #if DEBUG == false }
         @Html.Raw(JavaScriptSnippet.FullScript)
     @{ #endif }
     <script src="~/js/loader.js" async asp-append-version="true"></script>
